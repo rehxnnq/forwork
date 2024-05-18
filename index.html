@@ -21,6 +21,14 @@
             border-radius: 8px;
             padding: 30px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* Add animation for border */
+            animation: borderAnimation 4s infinite alternate;
+            border: 13px solid transparent; /* Added border */
+        }
+        @keyframes borderAnimation {
+            0% { border-color: rgb(255, 0, 0); } /* Red */
+            50% { border-color: rgb(0, 255, 0); } /* Green */
+            100% { border-color: rgb(0, 0, 255); } /* Blue */
         }
         .heading {
             margin-bottom: 20px; /* Added space below heading */
