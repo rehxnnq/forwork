@@ -119,44 +119,56 @@
         </table>
         <button class="button" onclick="addNewItemRow()">Add New Item</button>
         <span class="total-amount">Total: ₹<span id="total-value">0.00</span></span>
-        <script>
-            // Function to add a new item row
-            function addNewItemRow() {
-                const tbody = document.querySelector('.items-table tbody');
-                const newRow = document.createElement('tr');
-                const nameCell = document.createElement('td');
-                const priceCell = document.createElement('td');
-                const actionCell = document.createElement('td');
+    </div>
+    <script>
+        // Function to add a new item row
+        function addNewItemRow() {
+            const tbody = document.querySelector('.items-table tbody');
+            const newRow = document.createElement('tr');
+            const nameCell = document.createElement('td');
+            const priceCell = document.createElement('td');
+            const actionCell = document.createElement('td');
 
-                const nameInput = document.createElement('input');
-                nameInput.type = 'text';
-                nameInput.placeholder = 'Enter item name';
+            const nameInput = document.createElement('input');
+            nameInput.type = 'text';
+            nameInput.placeholder = 'Enter item name';
 
-                const priceInput = document.createElement('input');
-                priceInput.type = 'number';
-                priceInput.placeholder = 'Enter price';
-                priceInput.addEventListener('input', calculateTotal);
+            const priceInput = document.createElement('input');
+            priceInput.type = 'number';
+            priceInput.placeholder = 'Enter price';
+            priceInput.addEventListener('input', calculateTotal);
 
-                const removeButton = document.createElement('button');
-                removeButton.textContent = 'Remove';
-                removeButton.classList.add('remove-button');
-                removeButton.addEventListener('click', function() {
-                    tbody.removeChild(newRow);
-                    calculateTotal();
-                });
+            const removeButton = document.createElement('button');
+            removeButton.textContent = 'Remove';
+            removeButton.classList.add('remove-button');
+            removeButton.addEventListener('click', function() {
+                tbody.removeChild(newRow);
+                calculateTotal();
+            });
 
-                nameCell.appendChild(nameInput);
-                priceCell.appendChild(priceInput);
-                actionCell.appendChild(removeButton);
+            nameCell.appendChild(nameInput);
+            priceCell.appendChild(priceInput);
+            actionCell.appendChild(removeButton);
 
-                newRow.appendChild(nameCell);
-                newRow.appendChild(priceCell);
-                newRow.appendChild(actionCell);
+            newRow.appendChild(nameCell);
+            newRow.appendChild(priceCell);
+            newRow.appendChild(actionCell);
 
-                tbody.appendChild(newRow);
-            }
+            tbody.appendChild(newRow);
+        }
 
-            // Function to calculate total amount
-            function calculateTotal() {
-                let total = 0;
-                const priceInputs = document.querySelectorAll('.items-table tbody input[type="number"]');
+        // Function to calculate total amount
+        function calculateTotal() {
+            let total = 0;
+            const priceInputs = document.querySelectorAll('.items-table tbody input[type="number"]');
+            priceInputs.forEach(input => {
+                const value = parseFloat(input.value);
+                if (!isNaN(value)) {
+                    total += value;
+                }
+            });
+            document.getElementById('total-value').textContent = total.toFixed(2);
+        }
+    </script>
+</body>
+</html>
