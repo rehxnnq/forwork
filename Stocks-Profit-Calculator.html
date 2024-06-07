@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capital Cycle Store - Stocks Profit Calculator</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f8ff; /* Light blue background */
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* Add animation for border */
+            border-width: 24px;
+            border-style: solid;
+            border-color: #ff0000; /* Initial color */
+            animation: borderColorChange 5s infinite alternate;
+        }
+        @keyframes borderColorChange {
+            0% { border-color: #ff0000; } /* Red */
+            33% { border-color: #00ff00; } /* Green */
+            66% { border-color: #0000ff; } /* Blue */
+            100% { border-color: #ff0000; } /* Red */
+        }
+        .heading {
+            margin-bottom: 20px; /* Added space below heading */
+            font-size: 24px;
+            font-weight: bold;
+            color: #4CAF50; /* Green color for heading */
+            text-align: center; /* Center-aligned text */
+        }
+        .nav {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .nav li {
+            display: inline;
+            margin-right: 10px;
+        }
+        .nav a {
+            text-decoration: none;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        .nav a:hover {
+            text-decoration: underline;
+        }
+        .label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .input-field {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 250px;
+            margin-bottom: 15px;
+        }
+        .button {
+            background-color: #4CAF50; /* Green color for button */
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="heading">Capital Cycle Store - Stocks Profit Calculator</h1>
+        <nav class="nav">
+            <ul>
+                <li><a href="index.html">GST Calculator</a></li>
+                <li><a href="calculating-items.html">Calculating Items</a></li>
+                <li><a href="stocks-profit-calculator.html">Stocks Profit Calculator</a></li>
+            </ul>
+        </nav>
+        <label for="stockPrice" class="label">Stock Price:</label>
+        <input type="number" id="stockPrice" class="input-field" placeholder="Enter stock price">
+        
+        <label for="stockQuantity" class="label">Stock Quantity:</label>
+        <input type="number" id="stockQuantity" class="input-field" placeholder="Enter stock quantity">
+        
+        <label for="rateOfInterest" class="label">Rate of Interest (%):</label>
+        <input type="number" id="rateOfInterest" class="input-field" placeholder="Enter rate of interest">
+        
+        <label class="label">Period:</label>
+        <div>
+            <input type="radio" id="years" name="period" value="years" checked>
+            <label for="years">Years</label>
+            <input type="radio" id="months" name="period" value="months">
+            <label for="months">Months</label>
+        </div>
+        
+        <label for="numberOfPeriod" class="label">Number of Years/Months:</label>
+        <input type="number" id="numberOfPeriod" class="input-field" placeholder="Enter number of years/months">
+        
+        <button class="button" onclick="resetFields()">Reset</button>
+        <div id="result" class="result"></div>
+    </div>
+    <script>
+        document.querySelectorAll('.input-field, input[name="period"]').forEach(input => {
+            input.addEventListener('input', calculateProfit);
+        });
+
+        function calculateProfit() {
+            const stockPrice = parseFloat(document.getElementById('stockPrice').value);
+            const stockQuantity = parseFloat(document.getElementById('stockQuantity').value);
+            const rateOfInterest = parseFloat(document.getElementById('rateOfInterest').value);
+            const numberOfPeriod = parseFloat(document.getElementById('numberOfPeriod').value);
+            const periodType = document.querySelector('input[name="period"]:checked').value;
+
+            if (isNaN(stockPrice) || isNaN(stockQuantity) || isNaN(rateOfInterest) || isNaN(numberOfPeriod)) {
+                document.getElementById('result').innerHTML = "Please enter valid numbers in all fields.";
+                return;
+            }
+
+            const totalInitialInvestment = stockPrice * stockQuantity;
+            let futureValue;
+            if (periodType === 'years') {
+                futureValue = totalInitialInvestment * Math.pow((1 + rateOfInterest / 100), numberOfPeriod);
+            } else {
+                futureValue = totalInitialInvestment * Math.pow((1 + rateOfInterest / 100 / 12), numberOfPeriod);
+            }
+            const profit = futureValue - totalInitialInvestment;
+
+            const result = `Initial Investment: ₹${totalInitialInvestment.toFixed(2)}<br>Future Value: ₹${futureValue.toFixed(2)}<br>Profit: ₹${profit.toFixed(2)}`;
+            document.getElementById('result').innerHTML = result;
+        }
+
+        function resetFields() {
+            document.getElementById('stockPrice').value = '';
+            document.getElementById('stockQuantity').value = '';
+            document.getElementById('rateOfInterest').value = '';
+            document.getElementById('numberOfPeriod').value = '';
+            document.getElementById('result').innerHTML = '';
+            document.getElementById('years').checked = true;
+        }
+    </script>
+</body>
+</html>
