@@ -12,19 +12,27 @@
             background-color: #f0f8ff; /* Light blue background */
         }
         .container {
+            width: 70%;
             max-width: 600px;
             margin: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             background-color: #fff;
             border-radius: 8px;
             padding: 30px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* Add animation for border */
+            animation: borderAnimation 4s infinite alternate;
+            border: 13px solid #0056b3; /* Added border */
+        }
         }
         .heading {
-            margin-bottom: 20px;
+            margin-bottom: 20px; /* Added space below heading */
             font-size: 24px;
             font-weight: bold;
-            color: #4CAF50;
-            text-align: center;
+            color: #4CAF50; /* Green color for heading */
+            text-align: center; /* Center-aligned text */
         }
         .nav {
             width: 100%;
@@ -35,24 +43,24 @@
         .nav ul {
             list-style-type: none;
             padding: 0;
-            display: flex;
-            justify-content: center;
         }
         .nav li {
-            margin-right: 10px;
+            display: block; /* Change to block for better stacking on small screens */
+            margin-bottom: 10px; /* Increase spacing between nav items */
         }
         .nav a {
+            display: block; /* Change to block for full-width buttons */
+            border: 1px solid #4CAF50; /* Add thin border */
+            border-radius: 4px;
+            padding: 10px;
+            text-align: center; /* Center-align text */
             text-decoration: none;
             color: #4CAF50;
             font-weight: bold;
-            padding: 10px 20px;
-            border: 2px solid #4CAF50;
-            border-radius: 4px;
-            transition: background-color 0.3s, color 0.3s;
+            transition: background-color 0.3s; /* Add transition for smooth color change */
         }
         .nav a:hover {
-            background-color: #4CAF50;
-            color: white;
+            background-color: rgba(76, 175, 80, 0.1); /* Light green background on hover */
         }
         .label {
             margin-bottom: 5px;
@@ -62,10 +70,10 @@
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 4px;
-            width: 100%;
-            max-width: 250px;
+            width: 250px;
             margin-bottom: 15px;
         }
+        /* Remove arrow from number input */
         input[type="number"]::-webkit-outer-spin-button,
         input[type="number"]::-webkit-inner-spin-button {
             -webkit-appearance: none;
@@ -75,45 +83,21 @@
             -moz-appearance: textfield;
         }
         .button {
-            background-color: #4CAF50;
+            background-color: #007AFF; /* Blue color for iOS button */
             color: white;
-            padding: 12px 20px;
+            padding: 15px 30px; /* Increase padding for larger touch area */
             border: none;
-            border-radius: 4px;
+            border-radius: 10px; /* Slightly round corners */
+            font-size: 18px; /* Larger font size for better readability */
             cursor: pointer;
             transition: background-color 0.3s;
-            width: 100%;
-            max-width: 250px;
-            margin: 0 auto;
-            display: block;
         }
         .button:hover {
-            background-color: #45a049;
+            background-color: #0056b3; /* Darker blue on hover */
         }
         .result {
             margin-top: 15px;
             font-weight: bold;
-        }
-
-        /* Media Query for Responsive Design */
-        @media screen and (max-width: 600px) {
-            .container {
-                padding: 20px;
-            }
-            .heading {
-                font-size: 20px;
-            }
-            .nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-            .nav li {
-                margin-bottom: 10px;
-            }
-            .nav a {
-                padding: 10px;
-                font-size: 16px;
-            }
         }
     </style>
 </head>
