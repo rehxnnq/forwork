@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capital Cycle Store</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f8ff; /* Light blue background */
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .heading {
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #4CAF50;
+            text-align: center;
+        }
+        .nav {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        .nav li {
+            margin-right: 10px;
+        }
+        .nav a {
+            text-decoration: none;
+            color: #4CAF50;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: 2px solid #4CAF50;
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .nav a:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .input-field {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+            max-width: 250px;
+            margin-bottom: 15px;
+        }
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+            max-width: 250px;
+            margin: 0 auto;
+            display: block;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        /* Media Query for Responsive Design */
+        @media screen and (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            .heading {
+                font-size: 20px;
+            }
+            .nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            .nav li {
+                margin-bottom: 10px;
+            }
+            .nav a {
+                padding: 10px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="heading">Capital Cycle Store</h1>
+        <nav class="nav">
+            <ul>
+                <li><a href="index.html">GST Calculator</a></li>
+                <li><a href="calculating-items.html">Calculating Items</a></li>
+                <li><a href="Stocks-Profit-Calculator.html">Stocks Profit Calculator</a></li>
+            </ul>
+        </nav>
+        <label for="amount" class="label">Total Invoice Amount:</label>
+        <input type="number" id="amount" class="input-field" placeholder="Enter amount">
+        <button class="button" onclick="calculateGST()">Calculate GST</button>
+        <div id="result" class="result"></div>
+    </div>
+    <script>
+        function calculateGST() {
+            const amount = parseFloat(document.getElementById('amount').value);
+            if (isNaN(amount)) {
+                alert("Please enter a valid amount.");
+                return;
+            }
+            const cgst = amount * 0.06;
+            const sgst = cgst;
+            const finalAmount = amount - (cgst + sgst);
+            const result = `CGST: ₹${cgst.toFixed(2)} <br> SGST: ₹${sgst.toFixed(2)} <br> Final Amount: ₹${finalAmount.toFixed(2)}`;
+            document.getElementById('result').innerHTML = result;
+        }
+    </script>
+</body>
+</html>
