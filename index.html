@@ -15,6 +15,7 @@
 
       .container {
         width: 70%;
+        /* Reduced width by 20% */
         max-width: 600px;
         margin: auto;
         display: flex;
@@ -29,14 +30,13 @@
         border: 13px solid #4169E1;
         /* Added border */
       }
-      }
 
       .heading {
         margin-bottom: 20px;
         /* Added space below heading */
-        font-size: 24px;
+        font-size: 26px;
         font-weight: bold;
-        color: #4CAF50;
+        color: black;
         /* Green color for heading */
         text-align: center;
         /* Center-aligned text */
@@ -80,7 +80,6 @@
       .nav a:hover {
         background-color: rgba(41, 43, 215, 0.05);
         /* Light green background on hover */
-      }
       }
 
       .label {
@@ -128,11 +127,67 @@
         background-color: #0056b8;
         /* Darker blue on hover */
       }
-      }
 
       .result {
         margin-top: 15px;
         font-weight: bold;
+      }
+
+      .history-container {
+        width: 50%;
+        /* Reduced width by 20% */
+        max-width: 600px;
+        margin: auto;
+        margin-top: 20px;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .history-heading {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .history-item {
+        font-size: 14px;
+        margin-bottom: 5px;
+      }
+
+      .history-item+.history-item {
+        border-top: 1px solid #ccc;
+        padding-top: 10px;
+        margin-top: 10px;
+      }
+
+      .reset-button {
+        background-color: #ff4c4c;
+        /* Red color for reset button */
+        color: white;
+        padding: 10px 20px;
+        /* Padding for better touch area */
+        border: none;
+        border-radius: 10px;
+        /* Slightly round corners */
+        font-size: 16px;
+        /* Font size */
+        cursor: pointer;
+        transition: background-color 0.3s;
+        display: flex;
+        align-items: center;
+        margin-bottom: 7px;
+      }
+
+      .reset-button:hover {
+        background-color: #d93b3b;
+        /* Darker red on hover */
+      }
+
+      .reset-button .icon {
+        margin-right: 5px;
+        /* Space between icon and text */
       }
     </style>
   </head>
@@ -157,6 +212,12 @@
       <button class="button" onclick="calculateGST()">Calculate GST</button>
       <div id="result" class="result"></div>
     </div>
+    <div class="history-container">
+      <button class="reset-button" onclick="resetHistory()">
+        <span class="icon">✖</span> Reset History </button>
+      <div class="history-heading">Calculation History</div>
+      <div id="history"></div>
+    </div>
     <script>
       function calculateGST() {
         const amount = parseFloat(document.getElementById('amount').value);
@@ -171,7 +232,50 @@
 						<br> SGST: ₹${sgst.toFixed(2)} 
 							<br> Final Amount: ₹${finalAmount.toFixed(2)}`;
         document.getElementById('result').innerHTML = result;
+        // Save calculation in local storage
+        const history = JSON.parse(localStorage.getItem('history')) || [];
+        const now = new Date();
+        history.unshift({
+          date: now.toLocaleDateString(),
+          time: now.toLocaleTimeString(),
+          amount: amount.toFixed(2),
+          cgst: cgst.toFixed(2),
+          sgst: sgst.toFixed(2),
+          finalAmount: finalAmount.toFixed(2)
+        });
+        if (history.length > 15) {
+          history.pop(); // keep only the last 15 calculations
+        }
+        localStorage.setItem('history', JSON.stringify(history));
+        displayHistory();
       }
+
+      function displayHistory() {
+        const history = JSON.parse(localStorage.getItem('history')) || [];
+        const historyContainer = document.getElementById('history');
+        historyContainer.innerHTML = '';
+        history.forEach(item => {
+          const historyItem = document.createElement('div');
+          historyItem.classList.add('history-item');
+          historyItem.innerHTML = `Date: ${item.date} Time: ${item.time} 
+                                 
+								<br> Amount: ₹${item.amount} 
+                                 
+									<br> CGST: ₹${item.cgst} 
+                                 
+										<br> SGST: ₹${item.sgst} 
+                                 
+											<br> Final Amount: ₹${item.finalAmount}`;
+          historyContainer.appendChild(historyItem);
+        });
+      }
+
+      function resetHistory() {
+        localStorage.removeItem('history');
+        displayHistory();
+      }
+      // Display history on page load
+      displayHistory();
     </script>
   </body>
 </html>
