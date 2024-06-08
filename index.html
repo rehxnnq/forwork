@@ -11,7 +11,8 @@
             padding: 20px;
             background-color: #f0f8ff; /* Light blue background */
         }
-        .container {
+      .container {
+            width: 70%;
             max-width: 600px;
             margin: auto;
             display: flex;
@@ -23,12 +24,9 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             /* Add animation for border */
             animation: borderAnimation 4s infinite alternate;
-            border: 13px solid transparent; /* Added border */
+            border: 13px solid #0056b3; /* Added border */
+            
         }
-        @keyframes borderAnimation {
-            0% { border-color: rgb(255, 0, 0); } /* Red */
-            50% { border-color: rgb(0, 255, 0); } /* Green */
-            100% { border-color: rgb(0, 0, 255); } /* Blue */
         }
         .heading {
             margin-bottom: 20px; /* Added space below heading */
@@ -48,16 +46,23 @@
             padding: 0;
         }
         .nav li {
-            display: inline;
-            margin-right: 10px;
+            display: block; /* Change to block for better stacking on small screens */
+            margin-bottom: 10px; /* Increase spacing between nav items */
         }
         .nav a {
+            display: block; /* Change to block for full-width buttons */
+            border: 1px solid #4CAF50; /* Add thin border */
+            border-radius: 4px;
+            padding: 10px;
+            text-align: center; /* Center-align text */
             text-decoration: none;
             color: #4CAF50;
             font-weight: bold;
+            transition: background-color 0.3s; /* Add transition for smooth color change */
         }
         .nav a:hover {
-            text-decoration: underline;
+            background-color: rgba(76, 175, 80, 0.1); /* Light green background on hover */
+        }
         }
         .label {
             margin-bottom: 5px;
@@ -69,6 +74,7 @@
             border-radius: 4px;
             width: 250px;
             margin-bottom: 15px;
+            margin-top: 15px;
         }
         /* Remove arrow from number input */
         input[type="number"]::-webkit-outer-spin-button,
@@ -80,16 +86,19 @@
             -moz-appearance: textfield;
         }
         .button {
-            background-color: #4CAF50; /* Green color for button */
+            background-color: #007AFF; /* Blue color for iOS button */
             color: white;
-            padding: 12px 20px;
+            padding: 15px 30px; /* Increase padding for larger touch area */
             border: none;
-            border-radius: 4px;
+            border-radius: 10px; /* Slightly round corners */
+            font-size: 18px; /* Larger font size for better readability */
             cursor: pointer;
             transition: background-color 0.3s;
         }
-        .button:hover {
-            background-color: #45a049;
+         .button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
         }
         .result {
             margin-top: 15px;
