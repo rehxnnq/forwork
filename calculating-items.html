@@ -1,184 +1,268 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Capital Cycle Store</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        body {
-            font-family: sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f0f8ff; /* Light blue background */
-        }
-        .container {
-            max-width: 600px;
-            margin: auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: #fff;
-            border-radius: 8px;
-            padding: 30px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            /* Add animation for border */
-            animation: borderAnimation 4s infinite alternate;
-            border: 13px solid transparent; /* Added border */
-        }
-        @keyframes borderAnimation {
-            0% { border-color: rgb(255, 0, 0); } /* Red */
-            50% { border-color: rgb(0, 255, 0); } /* Green */
-            100% { border-color: rgb(0, 0, 255); } /* Blue */);
-        }
-        .heading {
-            margin-bottom: 20px; /* Added space below heading */
-            font-size: 24px;
-            font-weight: bold;
-            color: #4CAF50; /* Green color for heading */
-            text-align: center; /* Center-aligned text */
-        }
-        .nav {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-        .nav ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        .nav li {
-            display: inline;
-            margin-right: 10px;
-        }
-        .nav a {
-            text-decoration: none;
-            color: #4CAF50;
-            font-weight: bold;
-        }
-        .nav a:hover {
-            text-decoration: underline;
-        }
-        .items-table {
-            border-collapse: collapse;
-            width: 100%;
-            margin-bottom: 15px;
-        }
-        .items-table th, .items-table td {
-            padding: 10px;
-            border: 1px solid #ccc;
-            text-align: left;
-        }
-        .items-table input[type="text"], .items-table input[type="number"] {
-            width: 100%;
-            padding: 8px;
-            box-sizing: border-box;
-        }
-        .button {
-            background-color: #4CAF50; /* Green color for button */
-            color: white;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            margin: 5px;
-            transition: background-color 0.3s;
-        }
-        .button:hover {
-            background-color: #45a049;
-        }
-        .remove-button {
-            background-color: #f44336;
-            color: white;
-            padding: 8px 12px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .remove-button:hover {
-            background-color: #e53935;
-        }
-        .total-amount {
-            font-weight: bold;
-            margin-top: 15px;
-        }
+      body {
+        font-family: sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f0f8ff;
+        /* Light blue background */
+      }
+
+      .container {
+        width: 70%;
+        max-width: 600px;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #fff;
+        border-radius: 8px;
+        padding: 30px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        /* Add animation for border */
+        animation: borderAnimation 4s infinite alternate;
+        border: 13px solid #0056b3;
+        /* Added border */
+      }
+      }
+
+      .heading {
+        margin-bottom: 20px;
+        /* Added space below heading */
+        font-size: 24px;
+        font-weight: bold;
+        color: #4CAF50;
+        /* Green color for heading */
+        text-align: center;
+        /* Center-aligned text */
+      }
+
+      .nav {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+
+      .nav ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      .nav li {
+        display: block;
+        /* Change to block for better stacking on small screens */
+        margin-bottom: 10px;
+        /* Increase spacing between nav items */
+      }
+
+      .nav a {
+        display: block;
+        /* Change to block for full-width buttons */
+        border: 1px solid #4CAF50;
+        /* Add thin border */
+        border-radius: 4px;
+        padding: 10px;
+        text-align: center;
+        /* Center-align text */
+        text-decoration: none;
+        color: #4CAF50;
+        font-weight: bold;
+        transition: background-color 0.3s;
+        /* Add transition for smooth color change */
+      }
+
+      .nav a:hover {
+        background-color: rgba(76, 175, 80, 0.1);
+        /* Light green background on hover */
+      }
+      }
+
+      .label {
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+
+      .input-field {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 250px;
+        margin-bottom: 15px;
+        margin-top: 15px;
+      }
+
+      /* Remove arrow from number input */
+      input[type="number"]::-webkit-outer-spin-button,
+      input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      input[type="number"] {
+        -moz-appearance: textfield;
+      }
+
+      .button {
+        background-color: #007AFF;
+        /* Blue color for iOS button */
+        color: white;
+        padding: 15px 30px;
+        /* Increase padding for larger touch area */
+        border: none;
+        border-radius: 10px;
+        /* Slightly round corners */
+        font-size: 18px;
+        /* Larger font size for better readability */
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .button:hover {
+        background-color: #0056b3;
+        /* Darker blue on hover */
+      }
+      }
+
+      .result {
+        margin-top: 15px;
+        font-weight: bold;
+      }
+
+      .items-table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-bottom: 15px;
+      }
+
+      .items-table th,
+      .items-table td {
+        padding: 10px;
+        border: 1px solid #ccc;
+        text-align: left;
+      }
+
+      .items-table input[type="text"],
+      .items-table input[type="number"] {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+      }
+
+      .button {
+        background-color: #4CAF50;
+        /* Green color for button */
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin: 5px;
+        transition: background-color 0.3s;
+      }
+
+      .button:hover {
+        background-color: #45a049;
+      }
+
+      .remove-button {
+        background-color: #f44336;
+        color: white;
+        padding: 8px 12px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .remove-button:hover {
+        background-color: #e53935;
+      }
+
+      .total-amount {
+        font-weight: bold;
+        margin-top: 15px;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <h1 class="heading">Capital Cycle Store</h1>
-        <nav class="nav">
-            <ul>
-                <li><a href="index.html">GST Calculator</a></li>
-                <li><a href="calculating-items.html">Calculating Items</a></li>
-                <li><a href="Stocks-Profit-Calculator.html">Stocks Profit Calculator</a></li>
-            </ul>
-        </nav>
-        <table class="items-table">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
-        <button class="button" onclick="addNewItemRow()">Add New Item</button>
-        <span class="total-amount">Total: ₹<span id="total-value">0.00</span></span>
+      <h1 class="heading">Capital Cycle Store</h1>
+      <nav class="nav">
+        <ul>
+          <li>
+            <a href="index.html">GST Calculator</a>
+          </li>
+          <li>
+            <a href="calculating-items.html">Calculating Items</a>
+          </li>
+          <li>
+            <a href="Stocks-Profit-Calculator.html">Stocks Profit Calculator</a>
+          </li>
+        </ul>
+      </nav>
+      <table class="items-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <button class="button" onclick="addNewItemRow()">Add New Item</button>
+      <span class="total-amount">Total: ₹ <span id="total-value">0.00</span>
+      </span>
     </div>
     <script>
-        // Function to add a new item row
-        function addNewItemRow() {
-            const tbody = document.querySelector('.items-table tbody');
-            const newRow = document.createElement('tr');
-            const nameCell = document.createElement('td');
-            const priceCell = document.createElement('td');
-            const actionCell = document.createElement('td');
-
-            const nameInput = document.createElement('input');
-            nameInput.type = 'text';
-            nameInput.placeholder = 'Enter item name';
-
-            const priceInput = document.createElement('input');
-            priceInput.type = 'number';
-            priceInput.placeholder = 'Enter price';
-            priceInput.addEventListener('input', calculateTotal);
-
-            const removeButton = document.createElement('button');
-            removeButton.textContent = 'Remove';
-            removeButton.classList.add('remove-button');
-            removeButton.addEventListener('click', function() {
-                tbody.removeChild(newRow);
-                calculateTotal();
-            });
-
-            nameCell.appendChild(nameInput);
-            priceCell.appendChild(priceInput);
-            actionCell.appendChild(removeButton);
-
-            newRow.appendChild(nameCell);
-            newRow.appendChild(priceCell);
-            newRow.appendChild(actionCell);
-
-            tbody.appendChild(newRow);
-        }
-
-        // Function to calculate total amount
-        function calculateTotal() {
-            let total = 0;
-            const priceInputs = document.querySelectorAll('.items-table tbody input[type="number"]');
-            priceInputs.forEach(input => {
-                const value = parseFloat(input.value);
-                if (!isNaN(value)) {
-                    total += value;
-                }
-            });
-            document.getElementById('total-value').textContent = total.toFixed(2);
-        }
+      // Function to add a new item row
+      function addNewItemRow() {
+        const tbody = document.querySelector('.items-table tbody');
+        const newRow = document.createElement('tr');
+        const nameCell = document.createElement('td');
+        const priceCell = document.createElement('td');
+        const actionCell = document.createElement('td');
+        const nameInput = document.createElement('input');
+        nameInput.type = 'text';
+        nameInput.placeholder = 'Enter item name';
+        const priceInput = document.createElement('input');
+        priceInput.type = 'number';
+        priceInput.placeholder = 'Enter price';
+        priceInput.addEventListener('input', calculateTotal);
+        const removeButton = document.createElement('button');
+        removeButton.textContent = 'Remove';
+        removeButton.classList.add('remove-button');
+        removeButton.addEventListener('click', function() {
+          tbody.removeChild(newRow);
+          calculateTotal();
+        });
+        nameCell.appendChild(nameInput);
+        priceCell.appendChild(priceInput);
+        actionCell.appendChild(removeButton);
+        newRow.appendChild(nameCell);
+        newRow.appendChild(priceCell);
+        newRow.appendChild(actionCell);
+        tbody.appendChild(newRow);
+      }
+      // Function to calculate total amount
+      function calculateTotal() {
+        let total = 0;
+        const priceInputs = document.querySelectorAll('.items-table tbody input[type="number"]');
+        priceInputs.forEach(input => {
+          const value = parseFloat(input.value);
+          if (!isNaN(value)) {
+            total += value;
+          }
+        });
+        document.getElementById('total-value').textContent = total.toFixed(2);
+      }
     </script>
-</body>
+  </body>
 </html>
