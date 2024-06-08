@@ -1,0 +1,108 @@
+/* styles.css */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f0f8ff; /* Light blue background */
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 13px solid transparent; /* Added border */
+}
+
+@keyframes borderAnimation {
+    0% { border-color: rgb(255, 0, 0); } /* Red */
+    50% { border-color: rgb(0, 255, 0); } /* Green */
+    100% { border-color: rgb(0, 0, 255); } /* Blue */
+}
+
+.container {
+    animation: borderAnimation 4s infinite alternate;
+}
+
+.heading {
+    margin-bottom: 20px; /* Added space below heading */
+    font-size: 24px;
+    font-weight: bold;
+    color: #4CAF50; /* Green color for heading */
+    text-align: center; /* Center-aligned text */
+}
+
+.nav {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.nav li {
+    display: inline;
+    margin-right: 10px;
+}
+
+.nav a {
+    text-decoration: none;
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+.nav a:hover {
+    text-decoration: underline;
+}
+
+.label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.input-field {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 250px;
+    margin-bottom: 15px;
+}
+
+/* Remove arrow from number input */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.button {
+    background-color: #4CAF50; /* Green color for button */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #45a049;
+}
+
+.result {
+    margin-top: 15px;
+    font-weight: bold;
+}
