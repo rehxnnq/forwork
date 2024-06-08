@@ -1,139 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Capital Cycle Store</title>
     <style>
-        body {
-            font-family: sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f0f8ff; /* Light blue background */
-        }
-      .container {
-            width: 70%;
-            max-width: 600px;
-            margin: auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: #fff;
-            border-radius: 8px;
-            padding: 30px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            /* Add animation for border */
-            animation: borderAnimation 4s infinite alternate;
-            border: 13px solid #0056b3; /* Added border */
-            
-        }
-        }
-        .heading {
-            margin-bottom: 20px; /* Added space below heading */
-            font-size: 24px;
-            font-weight: bold;
-            color: #4CAF50; /* Green color for heading */
-            text-align: center; /* Center-aligned text */
-        }
-        .nav {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-        .nav ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        .nav li {
-            display: block; /* Change to block for better stacking on small screens */
-            margin-bottom: 10px; /* Increase spacing between nav items */
-        }
-        .nav a {
-            display: block; /* Change to block for full-width buttons */
-            border: 1px solid #4CAF50; /* Add thin border */
-            border-radius: 4px;
-            padding: 10px;
-            text-align: center; /* Center-align text */
-            text-decoration: none;
-            color: #4CAF50;
-            font-weight: bold;
-            transition: background-color 0.3s; /* Add transition for smooth color change */
-        }
-        .nav a:hover {
-            background-color: rgba(76, 175, 80, 0.1); /* Light green background on hover */
-        }
-        }
-        .label {
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        .input-field {
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            width: 250px;
-            margin-bottom: 15px;
-            margin-top: 15px;
-        }
-        /* Remove arrow from number input */
-        input[type="number"]::-webkit-outer-spin-button,
-        input[type="number"]::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
-        input[type="number"] {
-            -moz-appearance: textfield;
-        }
-        .button {
-            background-color: #007AFF; /* Blue color for iOS button */
-            color: white;
-            padding: 15px 30px; /* Increase padding for larger touch area */
-            border: none;
-            border-radius: 10px; /* Slightly round corners */
-            font-size: 18px; /* Larger font size for better readability */
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-         .button:hover {
-            background-color: #0056b3; /* Darker blue on hover */
-        }
+      body {
+        font-family: sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #E6E6FA;
+        /* Light blue background */
+      }
 
-        }
-        .result {
-            margin-top: 15px;
-            font-weight: bold;
-        }
+      .container {
+        width: 70%;
+        max-width: 600px;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #fff;
+        border-radius: 94px;
+        padding: 30px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        /* Add animation for border */
+        animation: borderAnimation 4s infinite alternate;
+        border: 13px solid #4169E1;
+        /* Added border */
+      }
+      }
+
+      .heading {
+        margin-bottom: 20px;
+        /* Added space below heading */
+        font-size: 24px;
+        font-weight: bold;
+        color: #4CAF50;
+        /* Green color for heading */
+        text-align: center;
+        /* Center-aligned text */
+      }
+
+      .nav {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+
+      .nav ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      .nav li {
+        display: block;
+        /* Change to block for better stacking on small screens */
+        margin-bottom: 10px;
+        /* Increase spacing between nav items */
+      }
+
+      .nav a {
+        display: block;
+        /* Change to block for full-width buttons */
+        border: 2px solid #4169E1;
+        /* Add thin border */
+        border-radius: 4px;
+        padding: 10px;
+        text-align: center;
+        /* Center-align text */
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+        transition: background-color 0.3s;
+        /* Add transition for smooth color change */
+      }
+
+      .nav a:hover {
+        background-color: rgba(41, 43, 215, 0.05);
+        /* Light green background on hover */
+      }
+      }
+
+      .label {
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+
+      .input-field {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 250px;
+        margin-bottom: 15px;
+        margin-top: 15px;
+      }
+
+      /* Remove arrow from number input */
+      input[type="number"]::-webkit-outer-spin-button,
+      input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      input[type="number"] {
+        -moz-appearance: textfield;
+      }
+
+      .button {
+        background-color: #4169E1;
+        /* Blue color for iOS button */
+        color: white;
+        padding: 15px 20px;
+        /* Increase padding for larger touch area */
+        border: none;
+        border-radius: 10px;
+        /* Slightly round corners */
+        font-size: 18px;
+        /* Larger font size for better readability */
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin-bottom: 20px;
+      }
+
+      .button:hover {
+        background-color: #0056b8;
+        /* Darker blue on hover */
+      }
+      }
+
+      .result {
+        margin-top: 15px;
+        font-weight: bold;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <h1 class="heading">Capital Cycle Store</h1>
-        <nav class="nav">
-            <ul>
-                <li><a href="index.html">GST Calculator</a></li>
-                <li><a href="calculating-items.html">Calculating Items</a></li>
-                <li><a href="Stocks-Profit-Calculator.html">Stocks Profit Calculator</a></li>
-            </ul>
-        </nav>
-        <label for="amount" class="label">Total Invoice Amount:</label>
-        <input type="number" id="amount" class="input-field" placeholder="Enter amount">
-        <button class="button" onclick="calculateGST()">Calculate GST</button>
-        <div id="result" class="result"></div>
+      <h1 class="heading" style="font-size: 26px;">Capital Cycle Store</h1>
+      <nav class="nav">
+        <ul>
+          <li>
+            <a href="index.html">GST Calculator</a>
+          </li>
+          <li>
+            <a href="calculating-items.html">Calculating Items</a>
+          </li>
+          <li>
+            <a href="Stocks-Profit-Calculator.html">Stocks Profit Calculator</a>
+          </li>
+        </ul>
+      </nav>
+      <label for="amount" class="label">Total Invoice Amount:</label>
+      <input type="number" id="amount" class="input-field" placeholder="Enter amount">
+      <button class="button" onclick="calculateGST()">Calculate GST</button>
+      <div id="result" class="result"></div>
     </div>
     <script>
-        function calculateGST() {
-            const amount = parseFloat(document.getElementById('amount').value);
-            if (isNaN(amount)) {
-                alert("Please enter a valid amount.");
-                return;
-            }
-            const cgst = amount * 0.06;
-            const sgst = cgst;
-            const finalAmount = amount - (cgst + sgst);
-            const result = `CGST: ₹${cgst.toFixed(2)} <br> SGST: ₹${sgst.toFixed(2)} <br> Final Amount: ₹${finalAmount.toFixed(2)}`;
-            document.getElementById('result').innerHTML = result;
+      function calculateGST() {
+        const amount = parseFloat(document.getElementById('amount').value);
+        if (isNaN(amount)) {
+          alert("Please enter a valid amount.");
+          return;
         }
+        const cgst = amount * 0.06;
+        const sgst = cgst;
+        const finalAmount = amount - (cgst + sgst);
+        const result = `CGST: ₹${cgst.toFixed(2)} 
+						<br> SGST: ₹${sgst.toFixed(2)} 
+							<br> Final Amount: ₹${finalAmount.toFixed(2)}`;
+        document.getElementById('result').innerHTML = result;
+      }
     </script>
-</body>
+  </body>
 </html>
